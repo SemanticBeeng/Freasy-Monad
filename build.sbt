@@ -36,14 +36,14 @@ lazy val shared = crossProject.in(file("."))
       "org.scalatest" %% "scalatest" % "3.0.0" % "test",
       "org.scalameta" %% "scalameta" % "3.7.4",
       "org.scalameta" %% "contrib" % "3.7.4"
-    ) ++
+    ) /*++
     Seq(
         "org.typelevel" %% "macro-compat" % "1.1.1",
         "org.scala-lang" % "scala-reflect" % version_scala % "provided",
         "org.scala-lang" % "scala-compiler" % version_scala % "provided",
         compilerPlugin("org.scalamacros" % "paradise" % version_macrosParadise cross CrossVersion.patch)
-      ),
-    //addCompilerPlugin("org.scalameta" % "paradise" % "3.0.0-M8" cross CrossVersion.full),
+      )*/,
+    addCompilerPlugin( "org.scalameta" %% "paradise" % "3.0.0-M11" cross CrossVersion.full),
     publishSettings
   )
   .jvmSettings()
