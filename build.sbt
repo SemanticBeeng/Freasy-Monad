@@ -1,5 +1,9 @@
 crossScalaVersions in ThisBuild := Seq("2.11.12", "2.12.2")
-scalaVersion in ThisBuild := "2.11.12"
+
+val version_scala = "2.11.12"
+val version_macrosParadise = "2.1.1"
+
+scalaVersion in ThisBuild := version_scala
 
 lazy val root = project.in(file("."))
   .aggregate(js, jvm)
@@ -32,8 +36,14 @@ lazy val shared = crossProject.in(file("."))
       "org.scalatest" %% "scalatest" % "3.0.0" % "test",
       "org.scalameta" %% "scalameta" % "3.7.4",
       "org.scalameta" %% "contrib" % "3.7.4"
-    ),
-    addCompilerPlugin("org.scalameta" % "paradise" % "3.0.0-M8" cross CrossVersion.full),
+    ) ++
+    Seq(
+        "org.typelevel" %% "macro-compat" % "1.1.1",
+        "org.scala-lang" % "scala-reflect" % version_scala % "provided",
+        "org.scala-lang" % "scala-compiler" % version_scala % "provided",
+        compilerPlugin("org.scalamacros" % "paradise" % version_macrosParadise cross CrossVersion.patch)
+      ),
+    //addCompilerPlugin("org.scalameta" % "paradise" % "3.0.0-M8" cross CrossVersion.full),
     publishSettings
   )
   .jvmSettings()
