@@ -1,5 +1,5 @@
-crossScalaVersions in ThisBuild := Seq("2.11.11", "2.12.2")
-scalaVersion in ThisBuild := "2.12.2"
+crossScalaVersions in ThisBuild := Seq("2.11.12", "2.12.2")
+scalaVersion in ThisBuild := "2.11.12"
 
 lazy val root = project.in(file("."))
   .aggregate(js, jvm)
@@ -27,11 +27,11 @@ lazy val shared = crossProject.in(file("."))
     ),
     resolvers += Resolver.bintrayIvyRepo("scalameta", "maven"),
     libraryDependencies ++= Seq(
-      "org.typelevel" %% "cats" % "0.9.0" % "provided",
-      "org.scalaz" %% "scalaz-core" % "7.2.11" % "provided",
+      "org.typelevel" %% "cats-core" % "1.1.0" % "provided",
+      "org.scalaz" %% "scalaz-core" % "7.2.21" % "provided",
       "org.scalatest" %% "scalatest" % "3.0.0" % "test",
-      "org.scalameta" %% "scalameta" % "1.7.0",
-      "org.scalameta" %% "contrib" % "1.7.0"
+      "org.scalameta" %% "scalameta" % "3.7.4",
+      "org.scalameta" %% "contrib" % "3.7.4"
     ),
     addCompilerPlugin("org.scalameta" % "paradise" % "3.0.0-M8" cross CrossVersion.full),
     publishSettings
